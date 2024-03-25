@@ -1,0 +1,29 @@
+﻿@model decimal
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Price Details</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    @*<style>
+        /* Custom CSS to center the card */
+        .center-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+    </style>*@
+</head>
+<body>
+    <div class="container center-card">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Total book Price Details</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Price: @Model</h6>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

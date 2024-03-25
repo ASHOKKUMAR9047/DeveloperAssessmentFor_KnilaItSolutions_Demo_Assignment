@@ -1,0 +1,43 @@
+﻿@model DeveloperAssessmentFor_KnilaItSolutions.Models.View_Models.BooksViewModels
+
+<div class="card text-center bg-primary">
+    <!-- Use bg-primary for blue background -->
+    <div class="card-header">
+        Add Books
+    </div>
+</div>
+
+<div>
+<form method="post">
+    
+    <div class="form-group">
+        <label asp-for="Title">Title:</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="AuthorFirstName">Author First Name:</label>
+        <input asp-for="AuthorFirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="AuthorLastName">Author Last Name:</label>
+        <input asp-for="AuthorLastName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Publisher">Publisher:</label>
+        <input asp-for="Publisher" class="form-control"  />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price">Price:</label>
+        <input asp-for="Price" class="form-control"  />
+    </div>
+    <br />
+    <!-- Add more input fields as needed -->
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+    
+</form>
+</div>
+
+        

@@ -1,0 +1,80 @@
+﻿@model List<DeveloperAssessmentFor_KnilaItSolutions.Models.Book>
+
+<div class="card text-center bg-primary">
+    <!-- Use bg-primary for blue background -->
+    <div class="card-header">
+        List Of AllBooks Details
+    </div>
+</div>
+
+<div>
+@*<form method="post" action="@Url.Action("BulkInsert", "Book")">*@
+
+<form method="post" asp-action="InsertData" asp-controller="Books">
+    <table class=" table table-bordered">
+    <thead class="align-items-center">
+        <tr>
+            <th>Publisher</th>
+            <th>AuthorLastName</th>
+            <th>AuthorFirstName</th>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                    <td><input type="hidden" name="books[@Model.IndexOf(book)].Publisher" value="@book.Publisher" />@book.Publisher</td>
+                    
+                     @*   @($"{book.AuthorLastName}, {book.AuthorFirstName}")*@
+                    <td><input type="hidden" name="books[@Model.IndexOf(book)].AuthorLastName" value="@book.AuthorLastName" />@book.AuthorLastName</td>
+                    <td><input type="hidden" name="books[@Model.IndexOf(book)].AuthorFirstName" value="@book.AuthorFirstName" />@book.AuthorFirstName</td>
+                    <td><input type="hidden" name="books[@Model.IndexOf(book)].Title" value="@book.Title" />@book.Title</td>
+                    @*<td><input type="hidden" name="books[@Model.IndexOf(book)].Id" value="@book.Id" />@book.Id</td> <!-- Add a hidden field for ID -->*@
+            </tr>
+                @*<td>@book.Publisher</td>
+                <td>@($"{book.AuthorLastName}, {book.AuthorFirstName}")</td>
+                <td>@book.Title</td>*@
+                
+            
+        }
+    </tbody>
+</table>
+    <div>
+    @*<button type="submit" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#messageModal">Insert into DB</button>*@
+    <button type="submit" class="btn btn-primary" asp-action="InsertData" asp-controller="Books">DBInsert</button>
+        <button type="submit" class="btn btn-primary" asp-area="" asp-controller="Books" asp-action="SP_AuthorTitle">SPAuthorDetails</button>
+        <button type="submit" class="btn btn-primary" asp-area="" asp-controller="Books" asp-action="SP_PublisherAuthor">SPPublisherDetails</button>
+    @*<button type="submit" class="btn btn-primary" asp-action="GetTotalPriceOfBooks" asp-controller="Books">TotalPrice</button>*@
+    </div>
+</form>
+</div>
+
+@if (TempData["ErrorMessage"] != null || TempData["SuccessMessage"] != null)
+{
+    <!-- Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalLabel">Message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                    }
+
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

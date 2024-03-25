@@ -1,0 +1,31 @@
+﻿@model List<DeveloperAssessmentFor_KnilaItSolutions.Models.Book>
+
+<div class="card text-center bg-primary">
+    <!-- Use bg-primary for blue background -->
+    <div class="card-header">
+        Author Title Details
+    </div>
+</div>
+
+<div>
+<table class="table table-bordered">
+<thead>
+      <tr> 
+            <th>Author</th>
+            <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                
+                <td>@($"{book.AuthorLastName}, {book.AuthorFirstName}")</td>
+                <td>@book.Title</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+
